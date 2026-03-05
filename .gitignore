@@ -1,0 +1,33 @@
+# Rust
+/target/
+Cargo.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Compiled extension
+python/typst_syntax/*.so
+python/typst_syntax/*.pyd
+
+# Maturin / build artifacts
+*.whl
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# pytest
+.pytest_cache/

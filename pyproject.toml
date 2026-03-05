@@ -1,0 +1,14 @@
+[build-system]
+requires = ["maturin>=1.7,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "typst-syntax"
+version = "0.1.0"
+requires-python = ">=3.9"
+classifiers = ["Programming Language :: Python :: 3"]
+
+[tool.maturin]
+python-source = "python"
+module-name = "typst_syntax._typst_syntax"
+features = ["pyo3/extension-module"]
