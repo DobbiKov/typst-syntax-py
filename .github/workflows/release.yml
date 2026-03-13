@@ -74,8 +74,8 @@ jobs:
             artifact: linux-musl-aarch64
 
           # ── macOS x86_64 — Intel ("old Macs") ────────────────────────────
-          # macos-13 is the last GitHub-hosted Intel runner (macos-12 is retired)
-          - os: macos-13
+          # cross-compiled from ARM runner (macos-13 / macos-12 are retired)
+          - os: macos-latest
             target: x86_64
             manylinux: auto
             artifact: macos-x86_64
@@ -91,11 +91,6 @@ jobs:
             target: x86_64
             manylinux: auto
             artifact: windows-x86_64
-          # Windows Server 2019 — for older Windows compatibility
-          - os: windows-2019
-            target: x86_64
-            manylinux: auto
-            artifact: windows-2019-x86_64
           # Windows Server 2022 — explicit (windows-latest may change over time)
           - os: windows-2022
             target: x86_64
