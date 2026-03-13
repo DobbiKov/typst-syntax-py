@@ -9,6 +9,7 @@ jobs:
     name: Build wheels — ${{ matrix.artifact }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false   # don't cancel other builds if one fails
       matrix:
         include:
           # ── Linux x86_64 ──────────────────────────────────────────────────
@@ -73,16 +74,11 @@ jobs:
             artifact: linux-musl-aarch64
 
           # ── macOS x86_64 — Intel ("old Macs") ────────────────────────────
-          # macos-13 is the last GitHub-hosted Intel runner
+          # macos-13 is the last GitHub-hosted Intel runner (macos-12 is retired)
           - os: macos-13
             target: x86_64
             manylinux: auto
             artifact: macos-x86_64
-          # macOS 12 (Monterey) Intel — for users on older macOS
-          - os: macos-12
-            target: x86_64
-            manylinux: auto
-            artifact: macos-12-x86_64
 
           # ── macOS ARM64 — Apple Silicon ("new Macs") ─────────────────────
           - os: macos-latest
@@ -100,12 +96,11 @@ jobs:
             target: x86_64
             manylinux: auto
             artifact: windows-2019-x86_64
-
-          # ── Windows ARM64 (cross-compiled) ───────────────────────────────
-          - os: windows-latest
-            target: aarch64
+          # Windows Server 2022 — explicit (windows-latest may change over time)
+          - os: windows-2022
+            target: x86_64
             manylinux: auto
-            artifact: windows-aarch64
+            artifact: windows-2022-x86_64
 
     steps:
       - uses: actions/checkout@v4
